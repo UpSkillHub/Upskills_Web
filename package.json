@@ -1,0 +1,42 @@
+{
+  "name": "upskills-backend",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "ngrok": "ngrok http 7000",
+    "migrate": "npx sequelize-cli db:migrate --config src/config/config.js --migrations-path src/migrations",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo --config src/config/config.js --migrations-path src/migrations",
+    "migrate:undo:all": "npx sequelize-cli db:migrate:undo:all --config src/config/config.js --migrations-path src/migrations",
+    "migration:generate": "npx sequelize-cli migration:generate --config src/config/config.js --migrations-path src/migrations --name",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lms",
+    "education",
+    "skills"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.18.1",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.11.0",
+    "mysql2": "^3.22.5",
+    "sequelize": "^6.37.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "sequelize-cli": "^6.6.5"
+  }
+}
