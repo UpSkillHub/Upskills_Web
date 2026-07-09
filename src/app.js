@@ -5,6 +5,8 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
+import { serve, setup } from "./config/swagger.js";
+
 // Routes
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -55,6 +57,15 @@ app.use("/api/enrollments", enrollmentRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/teams", teamRoutes);
+
+// ============ SWAGGER DOCUMENTATION ============
+app.use("/api-docs", serve, setup);
+
+// Optional: Serve raw JSON
+app.get("/api-docs.json", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(swaggerDocument);
+});
 
 app.use((req, res) => {
   res.status(404).json({
