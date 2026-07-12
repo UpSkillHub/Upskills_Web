@@ -1,21 +1,24 @@
 import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
-import config from "./config.js"; // ← Import the JS config directly
 
 dotenv.config();
 
-const env = process.env.NODE_ENV || "development";
-const dbConfig = config[env];
-
 const sequelize = new Sequelize(
-  dbConfig.database,
-  dbConfig.username,
-  dbConfig.password,
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
   {
-    host: dbConfig.host,
-    dialect: dbConfig.dialect,
-    logging: dbConfig.logging || console.log,
-    pool: dbConfig.pool || {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT || 4000,
+    dialect: "mysql",
+    logging: false,
+    dialectOptions: {
+      ssl: {
+        minVersion: "TLSv1.2",
+        rejectUnauthorized: true,
+      },
+    },
+    pool: {
       max: 5,
       min: 0,
       acquire: 30000,

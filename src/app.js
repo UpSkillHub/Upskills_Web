@@ -20,7 +20,7 @@ import teamRoutes from "./routes/teamRoutes.js";
 
 // Middleware
 import errorHandler from "./middleware/errorHandler.js";
-import { testConnection } from "./config/sequelize.js";
+import { testConnection } from "./config/db.js";
 
 dotenv.config();
 
@@ -77,7 +77,7 @@ app.use((req, res) => {
 // ERROR HANDLER
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.DB_PORT || 5000;
 
 const startServer = async () => {
   try {
