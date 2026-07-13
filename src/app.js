@@ -1,9 +1,11 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
-import dotenv from "dotenv";
 
 import { serve, setup } from "./config/swagger.js";
 
@@ -21,8 +23,6 @@ import teamRoutes from "./routes/teamRoutes.js";
 // Middleware
 import errorHandler from "./middleware/errorHandler.js";
 import { testConnection } from "./config/db.js";
-
-dotenv.config();
 
 const app = express();
 
