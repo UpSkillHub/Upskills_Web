@@ -26,12 +26,12 @@ const swaggerDocument = {
   },
   servers: [
     {
-      url: "http://localhost:4000/api",
-      description: "Development Server",
-    },
-    {
       url: "https://upskills-web-backend.onrender.com/api",
       description: "Production Server",
+    },
+    {
+      url: "http://localhost:4000/api",
+      description: "Development Server",
     },
   ],
   components: {
