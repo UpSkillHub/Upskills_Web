@@ -62,7 +62,7 @@ const User = (sequelize) => {
       },
     },
     {
-      tableName: "users",
+      tableName: "Users",
       timestamps: false,
       underscored: true,
       defaultScope: {

@@ -9,15 +9,15 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 4000,
+    port: process.env.DB_PORT || 3306,
     dialect: "mysql",
     logging: false,
-    dialectOptions: {
+    dialectOptions: process.env.NODE_ENV === 'production' ? {
       ssl: {
         minVersion: "TLSv1.2",
         rejectUnauthorized: true,
       },
-    },
+    } : {},
     pool: {
       max: 5,
       min: 0,

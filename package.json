@@ -10,7 +10,8 @@
     "migrate:undo": "npx sequelize-cli db:migrate:undo --config src/config/config.js --migrations-path src/migrations",
     "migrate:undo:all": "npx sequelize-cli db:migrate:undo:all --config src/config/config.js --migrations-path src/migrations",
     "migration:generate": "npx sequelize-cli migration:generate --config src/config/config.js --migrations-path src/migrations --name",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [
     "lms",
@@ -38,7 +39,9 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "fast-check": "^4.10.2",
     "nodemon": "^3.1.14",
-    "sequelize-cli": "^6.6.5"
+    "sequelize-cli": "^6.6.5",
+    "vitest": "^4.1.11"
   }
 }

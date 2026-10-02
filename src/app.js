@@ -8,6 +8,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
 import { serve, setup } from "./config/swagger.js";
+import swaggerDocument from "./swagger/index.js";
 
 // Routes
 import authRoutes from "./routes/authRoutes.js";
@@ -39,13 +40,13 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// app.get("/api/health", (req, res) => {
-//   res.status(200).json({
-//     status: "OK",
-//     message: "UP SKILLS HUB API is running",
-//     timestamp: new Date().toISOString(),
-//   });
-// });
+app.get("/api/health", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    message: "UP SKILLS HUB API is running",
+    timestamp: new Date().toISOString(),
+  });
+});
 
 // Routes
 app.use("/api/auth", authRoutes);
@@ -77,7 +78,7 @@ app.use((req, res) => {
 // ERROR HANDLER
 app.use(errorHandler);
 
-const PORT = process.env.DB_PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   try {
